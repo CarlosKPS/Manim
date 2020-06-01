@@ -34,6 +34,25 @@ class FirstSignal(Scene):
         self.wait()
 
 
+class ContinuoAndDiscrete(GraphScene):
+    CONFIG = {
+        "x_min": -10,
+        "x_max": 10,
+        "y_max": 1.5,
+        "y_min": -1.5,
+        "grid": True,
+        "graph_origin": ORIGIN,
+        "x_labeled_num": np.arange(-10, 10, 1),
+        "function_color": GREEN,
+        "axes_color": GOLD,
+        "x_axis_label": "$t$",
+        "y_axis_label": "$y(t)$" 
+    }
+    def construct(self):
+        self.setup_axes(animate=True)
+        #Text
+        text_1 = TextMobject("um sinal conínuo no é um sinal que existe para todo valor de t")
+
 class ShiftInTime(GraphScene):
     CONFIG = {
         "x_min": -10,
