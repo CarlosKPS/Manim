@@ -56,8 +56,39 @@ class FirstSignal(Scene):
         self.play(FadeOut(text_4))
         self.wait(2)
 
+class Continuo1(Scene):
+    def construct(self):
+        #Texts----------------------------------
+        text_1 = TextMobject("Sinais conínuos.")
+        text_1.scale(2)
 
-class ContinuoAndDiscrete(GraphScene):
+        #Functions-----------------------------
+        tfunc_1 = ["x(","t",")"]
+        definition = TextMobject("""$t \\in \\mathbb{R}$""")
+        definition.scale(2)
+        f1 = TextMobject(*tfunc_1)
+        f1.scale(2)
+
+        #Geometrics----------------------------
+        circle = Circle(color=YELLOW)
+        circle.surround(f1[1])
+        #Animations
+        self.play(FadeIn(text_1))
+        self.wait()
+        self.play(ApplyMethod(text_1.move_to, 3*UP))
+        self.wait()        
+        self.play(Write(f1))
+        self.wait()
+        self.play(ShowCreation(circle))
+        self.wait(2)
+        self.play(FadeOut(circle))
+        self.wait()
+        self.play(ApplyMethod(f1.move_to, 1.5*UP))
+        self.wait()
+        self.play(Write(definition))
+        self.wait(2)
+        
+class Continuo2(GraphScene):
     CONFIG = {
         "x_min": -10,
         "x_max": 10,
@@ -69,12 +100,12 @@ class ContinuoAndDiscrete(GraphScene):
         "function_color": GREEN,
         "axes_color": YELLOW,
         "x_axis_label": "$t$",
-        "y_axis_label": "$y$" 
+        "y_axis_label": "$x(t)$" 
     }
     def construct(self):
         self.setup_axes(animate=True)
         #Text ------------------------------------------------
-        text_1 = TextMobject("Sinais Contínuos e Discretos.")
+        text_1 = TextMobject("Exemplo")
         #Graph -----------------------------------------------
         graph_1 = self.get_graph(self.func_1, color=PURPLE, x_min=-10,x_max=10)
         graph_label_1 = self.get_graph_label(graph_1, direction=UP+RIGHT)
