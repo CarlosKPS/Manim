@@ -6,8 +6,8 @@ class FirstSignal(Scene):
         text_1 = TextMobject("Sinais e Sistemas")
         text_2 = TextMobject("O Que é um sinal???")
         text_def = TextMobject("Definições:")
-        text_3 = [["""Comum:""", """Qualquer manifestação que permite conhecer, reconhecer\\\\ ou prever alguma coisa""" ],
-            ["""Eletricidade:""", """impulso elétrico que entra num circuitou ou sai dele."""],
+        text_3 = [["""Comum:""", """Qualquer manifestação que permite conhecer, reconhecer\\\\ ou prever alguma coisa.""" ],
+            ["""Eletricidade:""", """Impulso elétrico que entra num circuitou ou sai dele."""],
             ["""Informática:""","""Impulso eletrônico que corresponde a uma \\\\unidade mínima de informação."""]
         ]
         text_4 = TextMobject("Sinais São representados\\\\ matematicamente por funções.")
@@ -59,11 +59,11 @@ class FirstSignal(Scene):
 class Continuo1(Scene):
     def construct(self):
         #Texts----------------------------------
-        text_1 = TextMobject("Sinais conínuos.")
+        text_1 = TextMobject("Sinais contínuos.")
         text_1.scale(2)
 
         #Functions-----------------------------
-        tfunc_1 = ["x(","t",")"]
+        tfunc_1 = ["$x($","$t$","$)$"]
         definition = TextMobject("""$t \\in \\mathbb{R}$""")
         definition.scale(2)
         f1 = TextMobject(*tfunc_1)
@@ -87,8 +87,112 @@ class Continuo1(Scene):
         self.wait()
         self.play(Write(definition))
         self.wait(2)
-        
+
+
 class Continuo2(GraphScene):
+    CONFIG = {
+        "x_min": -4*PI,
+        "x_max": 4*PI,
+        "x_tick_frequency": PI/2,
+        "y_max": 1.5,
+        "y_min": -1.5,
+        "y_tick_frequency": 0.5,
+        "grid": True,
+        "graph_origin": ORIGIN+0.5*DOWN,
+        "x_axis_label": None,
+        "y_axis_label": None, 
+    }
+    def construct(self):
+        self.setup_axes()
+        #Text ------------------------------------------------
+        text_1 = TextMobject("Exemplo")
+        #Graph -----------------------------------------------
+        graph_1 = self.get_graph(self.func_1, color=GREEN, x_min=-4*PI,x_max=4*PI)
+        graph_label_1 = self.get_graph_label(graph_1, direction=DOWN+RIGHT, label = "\\cos(\\theta)")
+        
+        text_1.move_to(3.7*UP)
+        self.play(Write(text_1))
+        self.wait()
+        self.play(ShowCreation(graph_1), Write(graph_label_1), run_time=2)
+        self.wait(2)
+    
+    #Setting some axis's prefferences 
+    def setup_axes(self):
+        #Always Start With this:
+        GraphScene.setup_axes(self)
+
+        #Width of edges
+        self.x_axis.set_stroke(width=2)
+        self.y_axis.set_stroke(width=2)
+
+        #Color of edges
+        self.x_axis.set_color(BLUE)
+        self.y_axis.set_color(BLUE)
+
+        func = TexMobject("\\cos(\\theta)")
+        var = TexMobject("\\theta")
+        func.set_color(BLUE_E)
+        var.set_color(BLUE_E)
+        func.next_to(self.y_axis,UP)
+        var.next_to(self.x_axis,RIGHT+UP)
+
+        self.y_axis.label_direction = LEFT*1.5
+        self.y_axis.add_numbers(*[-1, 1])
+
+        init_val_x = -4*PI
+        step_x = PI/2
+        end_val_x = 4*PI
+
+        values_decimal_x= list(np.arange(init_val_x, end_val_x, step_x))
+
+        list_x=TexMobject("-4\\pi",
+                            "-7\\frac{\\pi}{2}",
+                            "-3\\pi", 
+                            "-5\\frac{\\pi}{2}",
+                            "-2\\pi",
+                            "-3\\frac{\\pi}{2}",
+                            "-\\pi",
+                            "-\\frac{\\pi}{2}", 
+                            "0",                  
+                            "\\frac{\\pi}{2}",
+                            "\\pi",
+                            "3\\frac{\\pi}{2}",
+                            "2\\pi",
+                            "5\\frac{\\pi}{2}",
+                            "3\\pi",
+                            "7\\frac{\\pi}{2}",
+                            "4\\pi",
+                          )
+        #List of tuples (position, label)
+        values_x =[ (i, j) for i,j in zip(values_decimal_x, list_x)]
+
+        self.x_axis_labels = VGroup()
+
+        for x_val, x_tex in values_x:
+            x_tex.scale(0.4)
+            x_tex.next_to(self.coords_to_point(x_val, 0), DOWN)
+            if x_val == 0:
+                x_tex.scale(1.2)
+                x_tex.next_to(self.coords_to_point(0, 0), 0)
+            self.x_axis_labels.add(x_tex)
+
+        
+
+        self.play(
+            *[Write(objeto) 
+            for objeto in [
+                self.x_axis,
+                self.y_axis, 
+                self.x_axis_labels, 
+                func, var
+                ]
+            ], run_time = 2
+        )
+
+    def func_1(self, x):
+        return np.cos(x)
+
+class ContinuoAndDiscrete(GraphScene):
     CONFIG = {
         "x_min": -10,
         "x_max": 10,
