@@ -5,7 +5,7 @@ class FirstSignal(Scene):
     def construct(self):
         text_1 = TextMobject("Sinais e Sistemas")
         text_2 = TextMobject("O Que é um sinal???")
-        text_def = TextMobject("Definições:")
+        text_def = TextMobject("Definições.")
         text_3 = [["""Comum:""", """Qualquer manifestação que permite conhecer, reconhecer\\\\ ou prever alguma coisa.""" ],
             ["""Eletricidade:""", """Impulso elétrico que entra num circuitou ou sai dele."""],
             ["""Informática:""","""Impulso eletrônico que corresponde a uma \\\\unidade mínima de informação."""]
