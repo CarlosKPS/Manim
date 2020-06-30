@@ -20,7 +20,7 @@ class ContinuoAndDiscrete(GraphScene):
         text_1 = TextMobject("Exemplo")
         #Graph -----------------------------------------------
         graph_1 = self.get_graph(self.func_1, color=PURPLE, x_min=-10,x_max=10)
-        graph_label = self.get_graph_label(graph_1, direction=UP+RIGHT)
+        graph_label = self.get_graph_label(graph_1, direction=UP+RIGHT, label="\\cos(t)")
         
         number_of_n = []
         color_list = [BLUE_D, PINK, PURPLE,  GREEN, YELLOW, ORANGE, RED_C]
@@ -49,8 +49,10 @@ class ContinuoAndDiscrete(GraphScene):
             number_of_n[k+1].set_color(color=color_list[k+1])
             number_of_n[k+1].move_to(3*UP+3*RIGHT)
             self.play(ReplacementTransform(dots_for_each_graph[k], dots_for_each_graph[k+1]),
-                    ReplacementTransform(number_of_n[k], number_of_n[k+1]),
-                    ApplyMethod(number_of_n[k].remove))
+                    ReplacementTransform(number_of_n[k], number_of_n[k+1]))
+            self.wait()
+            self.play(ShowCreation(graph_1))
+            self.wait(3)
             
     def get_points_from_graphic(self, graphic, number_of_lines, point_radius=0.04, xmin=-10, xmax=10, dot_color=BLUE):
         graph = self.get_graph(graphic, color=PURPLE, x_min=xmin,x_max=xmax)

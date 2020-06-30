@@ -1,0 +1,25 @@
+Parte1 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Hoje vamos começar a falar sobre séries.
+Séries são muito importantes para diversas ciências e aplicacões. Mas para entender melhor o que são, vamos tentar entender primeiro o conceito de sequência.
+sequência porde ser definido como uma lista de numeros escritos em uma ordem definida. 
+e assim denotamos os termos de uma sequência; a1 é o primeiro termo da sequencia, o proximo é o a2, seguido pelo a3 e assim por diante. Aqui eu coloquei até o
+décimo termo para exemplificar. Para indicar que podemos seguir indefinidademente colocamos reticencias até chegar a an, que é um termo genérico, chamamos de enésimo
+termo e, em tese, podemos continuar até onde quisermos.
+
+Temos alguma maneiras de reprensentar uma sequencia.
+1 - A primeira é escrever os termos literalmente ou alguns termos para indicar de qual sequencia se trata.
+2 - a segunda forma Forma é escrever o enésimo termo entre chavez
+3 - A terceira forma é escrever a segunda forma indicado de maneira formal com o subíndice indicando a letra que é alterada e o períndice indicando que a sequencia 
+vai até um certo ponto, nesse caso, até o infinito.
+
+Vamos ver um exemplo classico de uma sequencia muito famosa: a sequencia de fibonacci.
+a sequencia do proximo termo é a soma dos dois termos anteriores. an-1 é o termpo anterior e, an-2 é o termo anterior ao termos anterior.
+podemos ver o passo a passo de como se segue.
+
+Parte 2 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+De maneira geral escreve o enésimo termo de uma sequencia e com isso descobrir qualquer termo da mesma. Vamos ver um exemplo:
+N divido por n+1 com n indo de 1 até o infinito. 
+Para descobrir qualquer termo de uma sequencia basta substituir n pelo numero inteiro desejado desde que esse numero seja definido. No nosso caso vai 1 até o infinito.
+Sempre que possível é bom colocar uma sequencia nessa forma pois ela já fornece qualquer termo que se queira evitando assim, trabalho braçal.
+Podemos perceber um detalhe importante aqui. Repare nos valores das divisões que temos aqui, eles vãos crescendo começa com 0.5 e vai aumentando de pouco em pouco. 
+Na verdade se olharmos a diferença entre um termo e outro 
